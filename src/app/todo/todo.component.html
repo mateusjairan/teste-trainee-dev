@@ -12,9 +12,19 @@
   <div class="todo-list_container">
     <div class="todo-list_todo">
       <app-todo-item
-        *ngFor="let todo of filteredTodos()"
+        *ngFor="let todo of todos"
         [todo]="todo"
       ></app-todo-item>
     </div>
   </div>
+
+
+  <app-confirmation-modal
+    *ngIf="showConfirmationModal"
+    [message]="'Você tem certeza que deseja limpar as tarefas concluídas?'"
+    (confirm)="clearCompletedTasks()"
+    (cancel)="closeConfirmationModal()"
+  ></app-confirmation-modal>
 </div>
+
+

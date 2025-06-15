@@ -6,6 +6,7 @@ import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { ConfirmationModalComponent } from '../shared/components/confirmation-modal/confirmation-modal.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
     TodoComponent,
     TodoItemComponent,
     NewTaskComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     CommonModule,
