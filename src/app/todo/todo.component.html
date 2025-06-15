@@ -17,14 +17,6 @@
       ></app-todo-item>
     </div>
   </div>
-
-
-  <app-confirmation-modal
-    *ngIf="showConfirmationModal"
-    [message]="'Você tem certeza que deseja limpar as tarefas concluídas?'"
-    (confirm)="clearCompletedTasks()"
-    (cancel)="closeConfirmationModal()"
-  ></app-confirmation-modal>
 </div>
 
 

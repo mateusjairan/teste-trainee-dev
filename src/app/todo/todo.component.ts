@@ -10,7 +10,6 @@ import { TodoService } from '../shared/services/todo.service';
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   showCompletedTasks: boolean = false;
-  showConfirmationModal: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
@@ -50,19 +49,13 @@ export class TodoComponent implements OnInit {
   }
 
   clearCompletedTasks() {
-    this.openConfirmationModal()
+    if (this.todos.filter.length > 0 &&
+    confirm('Are you sure you want to clear all completed tasks?')) {
     this.todoService.clearCompletedTasks();
     this.loadTodos();
-
+    }
   }
 
-  openConfirmationModal() {
-    this.showConfirmationModal = true;
-  }
-
-  closeConfirmationModal() {
-    this.showConfirmationModal = false;
-  }
 
   toggleCompletedTasks() {
     this.showCompletedTasks = !this.showCompletedTasks;
