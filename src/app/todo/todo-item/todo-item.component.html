@@ -21,10 +21,14 @@
       class="todo-item_edit-input"
     />
   </div>
-  <button *ngIf="!isEditing" class="todo-item_edit" (click)="startEditing()">
+
+  <div>
+    <button *ngIf="!isEditing" class="todo-item_edit" (click)="startEditing()">
     <i class="fas fa-edit"></i> Editar
   </button>
   <button class="todo-item_delete" (click)="deleteTodo()">
     <i class="fas fa-trash-alt"></i> Remover
   </button>
+  </div>
+
 </div>

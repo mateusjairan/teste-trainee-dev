@@ -28,6 +28,7 @@
 }
 
 .todo-item_edit{
+  margin-right: 1rem;
   color: blue;
   width: 10px;
   width: fit-content;
