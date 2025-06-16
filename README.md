@@ -37,17 +37,47 @@ Após essas correções, a aplicação passou a iniciar corretamente com o coman
 
 ## 4. Relatório de Correção de Bugs
 
-### 5.1. Bugs Corrigidos:
-1. **Duplicação de tarefas ao salvar:** Ajustei o método de salvamento para evitar múltiplas inserções.
-2. **Salvar apenas após atualizar a página:** Corrigi o estado do formulário para permitir múltiplos salvamentos sem necessidade de recarregar.
-3. **Texto do botão de limpar tarefas:** Alterei o texto para português.
-4. **Botões de exibir/ocultar tarefas concluídas:** Corrigi a lógica invertida dos botões.
-5. **Confirmação ao limpar tarefas concluídas:** Adicionei uma confirmação utilizando a biblioteca SweetAlert.
-6. **Remoção de tarefas não concluídas:** Ajustei o método para remover apenas tarefas concluídas.
-7. **Funcionalidade do botão "Editar":** Implementado preenchimento do campo de texto e atualização da tarefa selecionada.
-8. **Desalinhamento do botão "Editar":** Posicionei o botão ao lado do botão "Remover".
-9. **Cor do botão "Remover":** Alterei a cor para vermelho.
-10. **Itens em branco na lista:** Adicionei validações para impedir salvamento de itens vazios ou contendo apenas espaços.
+### 5.1. Bugs Corrigidos
+
+1. **Duplicação de tarefas ao salvar:**
+   - **Razão:** O método de salvamento estava sendo chamado múltiplas vezes devido a eventos duplicados.
+   - **Solução Técnica:** Adicionei uma verificação para garantir que o método de salvamento seja executado apenas uma vez por evento.
+
+2. **Salvar apenas após atualizar a página:**
+   - **Razão:** O estado do formulário não estava sendo atualizado corretamente após o salvamento.
+   - **Solução Técnica:** Ajustei o ciclo de vida do componente para atualizar o estado do formulário após cada operação de salvamento.
+
+3. **Texto do botão de limpar tarefas:**
+   - **Razão:** O texto estava em inglês, dificultando a compreensão para usuários brasileiros.
+   - **Solução Técnica:** Alterei o texto diretamente no arquivo de template HTML para "Limpar Tarefas".
+
+4. **Botões de exibir/ocultar tarefas concluídas:**
+   - **Razão:** A lógica dos botões estava invertida, exibindo tarefas quando deveria ocultá-las e vice-versa.
+   - **Solução Técnica:** Corrigi a lógica condicional no arquivo TypeScript para garantir o comportamento correto.
+
+5. **Confirmação ao limpar tarefas concluídas:**
+   - **Razão:** Não havia uma confirmação antes de limpar as tarefas concluídas, o que poderia causar exclusões acidentais.
+   - **Solução Técnica:** Implementei uma confirmação utilizando a biblioteca SweetAlert para exibir um diálogo antes de executar a ação.
+
+6. **Remoção de tarefas não concluídas:**
+   - **Razão:** O método de remoção estava excluindo todas as tarefas, independentemente do estado de conclusão.
+   - **Solução Técnica:** Ajustei o método para filtrar e remover apenas as tarefas marcadas como concluídas.
+
+7. **Funcionalidade do botão "Editar":**
+   - **Razão:** O botão "Editar" não estava preenchendo o campo de texto com os dados da tarefa selecionada.
+   - **Solução Técnica:** Adicionei lógica para carregar os dados da tarefa no campo de texto ao clicar no botão "Editar".
+
+8. **Desalinhamento do botão "Editar":**
+   - **Razão:** O botão "Editar" estava desalinhado em relação ao botão "Remover".
+   - **Solução Técnica:** Ajustei o CSS para posicionar o botão "Editar" ao lado do botão "Remover".
+
+9. **Cor do botão "Remover":**
+   - **Razão:** A cor do botão "Remover" não estava destacando sua função de exclusão.
+   - **Solução Técnica:** Alterei a cor do botão para vermelho no arquivo CSS.
+
+10. **Itens em branco na lista:**
+    - **Razão:** Não havia validações para impedir o salvamento de itens vazios ou contendo apenas espaços.
+    - **Solução Técnica:** Adicionei validações no método de salvamento para verificar se o campo de texto contém conteúdo válido antes de salvar.
 
 ### Bug Não Corrigido:
 11. **Barra de rolagem na lista de tarefas:** Não foi possível implementar devido ao tempo limitado.
@@ -78,6 +108,12 @@ Nenhuma melhoria foi implementada devido ao tempo limitado.
 Apesar do curto prazo de dois dias, consegui corrigir quase todos os bugs solicitados. Utilizei o GitHub Copilot como apoio devido ao meu conhecimento limitado em Angular, mas revisei e entendi cada solução implementada. A barra de rolagem na lista de tarefas foi o único item que não consegui corrigir.
 
 Além disso, utilizei uma branch separada para realizar testes e validar as correções antes de integrá-las ao projeto principal.
+
+## 9. Deploy da Aplicação
+
+A aplicação foi implantada na plataforma Vercel e pode ser acessada através do seguinte link:
+
+[Gerenciador de Tarefas - Deploy Vercel](https://teste-trainee-debdxs7d7-mateusjairans-projects.vercel.app/#/todo)
 
 ---
 
