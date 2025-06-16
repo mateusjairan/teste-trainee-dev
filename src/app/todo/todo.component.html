@@ -13,7 +13,9 @@
     <div class="todo-list_todo">
       <app-todo-item
         *ngFor="let todo of todos"
-        [todo]="todo"
+         [todo]="todo"
+    (updateTodo)="updateTodo($event)"
+    (deleteTodoEvent)="deleteTodo($event)"
       ></app-todo-item>
     </div>
   </div>

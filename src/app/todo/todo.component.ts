@@ -33,13 +33,18 @@ export class TodoComponent implements OnInit {
     this.todoService.addTodo(newTodo);
   }
 
-  updateTodo(updatedTodo: Todo) {
-    this.todoService.updateTodo(updatedTodo);
+  updateTodo(updatedTodo: Todo): void {
+  const index = this.todos.findIndex(todo => todo.id === updatedTodo.id);
+  if (index !== -1) {
+    this.todos[index] = updatedTodo;
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+}
 
-  deleteTodo(todoId: number) {
-    this.todoService.deleteTodo(todoId);
-  }
+  deleteTodo(todoId: number): void {
+  this.todos = this.todos.filter(todo => todo.id !== todoId);
+  localStorage.setItem('todos', JSON.stringify(this.todos));
+}
 
   clearAll() {
     if (this.todos.length > 0 && confirm('Are you sure you want to clear all tasks?')) {

@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../shared/models/todo.model';
-import { TodoService } from '../../shared/services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -9,17 +8,40 @@ import { TodoService } from '../../shared/services/todo.service';
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
-  @Output() deletedTodo: EventEmitter<number> = new EventEmitter<number>();
+  @Output() updateTodo = new EventEmitter<Todo>();
+  @Output() deleteTodoEvent = new EventEmitter<number>();
 
-  constructor(private todoService: TodoService) {}
+  isEditing = false;
+  editedTitle = '';
 
-  deleteTodo(): void {
-    if (confirm('Are you sure you want to delete this task?')) {
-      this.todoService.deleteTodo(this.todo.id);
-    }
+  startEditing(): void {
+    this.isEditing = true;
+    this.editedTitle = this.todo.title;
+  }
+
+ saveEdit(): void {
+  if (this.editedTitle.trim()) { // Verifica se o título não está vazio
+    this.todo.title = this.editedTitle;
+    this.updateTodo.emit(this.todo);
+    this.saveToLocalStorage();
+    this.isEditing = false;
+  }
+}
+
+  saveToLocalStorage(): void {
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+    const updatedTodos = todos.map((t: Todo) =>
+      t.id === this.todo.id ? this.todo : t
+    );
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
   }
 
   onTaskChecked(): void {
-    this.todoService.updateTodo(this.todo);
+    this.updateTodo.emit(this.todo);
+    this.saveToLocalStorage();
+  }
+
+  deleteTodo(): void {
+    this.deleteTodoEvent.emit(this.todo.id); // Emitindo o ID corretamente
   }
 }
