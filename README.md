@@ -41,11 +41,11 @@ Após essas correções, a aplicação passou a iniciar corretamente com o coman
 
 1. **Duplicação de tarefas ao salvar:**
    - **Razão:** O método de salvamento estava sendo chamado múltiplas vezes devido a eventos duplicados.
-   - **Solução Técnica:** Adicionei uma verificação para garantir que o método de salvamento seja executado apenas uma vez por evento.
+   - **Solução Técnica:** Adicionei uma verificação no código para garantir que o método de salvamento seja executado apenas uma vez por evento.
 
 2. **Salvar apenas após atualizar a página:**
    - **Razão:** O estado do formulário não estava sendo atualizado corretamente após o salvamento.
-   - **Solução Técnica:** Ajustei o ciclo de vida do componente para atualizar o estado do formulário após cada operação de salvamento.
+   - **Solução Técnica:** Ajustei o ciclo de vida do componente Angular para atualizar o estado do formulário após cada operação de salvamento.
 
 3. **Texto do botão de limpar tarefas:**
    - **Razão:** O texto estava em inglês, dificultando a compreensão para usuários brasileiros.
@@ -57,7 +57,7 @@ Após essas correções, a aplicação passou a iniciar corretamente com o coman
 
 5. **Confirmação ao limpar tarefas concluídas:**
    - **Razão:** Não havia uma confirmação antes de limpar as tarefas concluídas, o que poderia causar exclusões acidentais.
-   - **Solução Técnica:** Implementei uma confirmação utilizando a biblioteca SweetAlert para exibir um diálogo antes de executar a ação.
+   - **Solução Técnica:** Implementei uma confirmação utilizando um alerta padrão para exibir um diálogo antes de executar a ação.
 
 6. **Remoção de tarefas não concluídas:**
    - **Razão:** O método de remoção estava excluindo todas as tarefas, independentemente do estado de conclusão.
@@ -65,7 +65,7 @@ Após essas correções, a aplicação passou a iniciar corretamente com o coman
 
 7. **Funcionalidade do botão "Editar":**
    - **Razão:** O botão "Editar" não estava preenchendo o campo de texto com os dados da tarefa selecionada.
-   - **Solução Técnica:** Adicionei lógica para carregar os dados da tarefa no campo de texto ao clicar no botão "Editar".
+   - **Solução Técnica:** Adicionei lógica no TypeScript para carregar os dados da tarefa no campo de texto ao clicar no botão "Editar".
 
 8. **Desalinhamento do botão "Editar":**
    - **Razão:** O botão "Editar" estava desalinhado em relação ao botão "Remover".
